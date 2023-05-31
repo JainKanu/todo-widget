@@ -1,42 +1,55 @@
-.responsive {
-    align-items: center;
-}
-
 .todo-card {
+    top: 270px;
+    width: 100px;
     background-color: #8b6fff;
     color: #fff;
-    border-radius: 0 10px 10px 0 !important;
+    border-radius: 0 5px 5px 0 !important;
     height: fit-content;
 
-    .progress-circle {
-        font-size: 15px;
-        text-align: center;
+    .full-screen {
+        .progress-circle {
+            font-size: 10px;
+            text-align: center;
+            width: 70%;
+        }
+    }
+    .small-screen {
+        .progress-circle {
+            font-size: 8px;
+            text-align: center;
+        }
+        .card-content {
+            line-height: 15px;
+            font-size: 10px;
+        }
     }
     .card-text {
-        display: initial;
         padding: 0;
-    }
-    .card-content {
-        margin: 0;
-        padding-top: 10px;
-        text-align: center;
+        .card-content {
+            margin: 0;
+            padding-top: 8px;
+            text-align: center;
+        }
     }
 }
 
 .steps-card {
+    top: 300px;
+    width: 345px;
     padding-top: 2px;
     background-color: #8b6fff !important;
-    border-radius: 0 10px 10px 0 !important;
+    border-radius: 0 8px 8px 0 !important;
     .steps-card-content {
         padding: 4px 16px;
         background-color: #fff;
-        border-radius: 0 10px 10px 0;
+        border-radius: 0 8px 8px 0;
         .title {
             display: flex;
             justify-content: space-between;
             padding-right: 0;
         }
         .subtitle {
+            width: 90%;
             white-space: pre-wrap;
         }
         .steps-list {
@@ -61,21 +74,35 @@
     }
 }
 
-@media only screen and (max-width: 350px) {
+@media only screen and (min-width: 360px) {
+    .small-screen {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .full-screen {
+        display: none;
+    }
     .responsive {
         justify-content: flex-end;
     }
     .todo-card {
-        border-radius: 10px 0 0 10px !important;
+        top: 180px;
+        width: 65px;
+        height: 90px;
+        border-radius: 4px 0 0 4px !important;
         height: fit-content;
     }
     .steps-menu {
-        position: fixed;
-        top: 27em;
+        display: flex;
+        align-items: flex-end;
         .steps-card {
-            border-radius: 10px 10px 0 0 !important;
+            width: fit-content;
+            top: 0;
+            border-radius: 8px 8px 0 0 !important;
             .steps-card-content {
-                border-radius: 10px 10px 0 0;
+                border-radius: 8px 8px 0 0;
             }
         }
     }

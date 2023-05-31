@@ -1,41 +1,54 @@
 <template>
-  <div class="responsive fill-height d-flex">
-    <v-card
-      class="todo-card"
-      width="120"
-      @click="stepsCard = true"
-      v-if="!stepsCard"
-    >
+  <div class="responsive fill-height d-flex w-100">
+    <v-card class="todo-card" @click="stepsCard = true" v-if="!stepsCard">
       <v-card-item>
-        <v-progress-circular :size="80" :width="7" :model-value="progressValue">
+        <v-progress-circular
+          class="full-screen"
+          :size="65"
+          :width="5"
+          :model-value="progressValue"
+          :rotate="180"
+        >
           <span class="progress-circle"
             ><b>{{ progressValue }}%</b> <small>Complete</small></span
           >
         </v-progress-circular>
-        <v-card-text class="card-text">
+        <v-progress-circular
+          class="small-screen"
+          :size="32"
+          :width="3"
+          :model-value="progressValue"
+          :rotate="180"
+        >
+          <span class="progress-circle"
+            ><b>{{ progressValue }}%</b></span
+          >
+        </v-progress-circular>
+        <v-card-text class="card-text full-screen">
           <p class="card-content"><b>What do I do next?</b></p>
+        </v-card-text>
+        <v-card-text class="card-text small-screen">
+          <p class="card-content"><b>What's next?</b></p>
         </v-card-text>
       </v-card-item>
     </v-card>
 
     <div class="overlay-menu">
       <v-menu
-        class="steps-menu d-flex align-center"
+        class="steps-menu"
         v-model="stepsCard"
         :close-on-content-click="false"
       >
-        <v-card class="steps-card" width="350">
+        <v-card class="steps-card">
           <div class="steps-card-content">
-            <!-- <div> -->
-            <v-card-title class="title">
+            <v-card-title class="title pl-0">
               <span>You're just steps away...</span>
               <v-icon @click="stepsCard = false" icon="close" />
             </v-card-title>
-            <v-card-subtitle class="subtitle">
+            <v-card-subtitle class="subtitle pl-0">
               ... to get the best recommendations for your term insurance
             </v-card-subtitle>
             <v-divider></v-divider>
-            <!-- <v-card-title> You're just steps away... </v-card-title> -->
             <v-list>
               <v-list-item
                 class="steps-list"
@@ -45,7 +58,16 @@
                 <v-list-item-title class="title pb-3">
                   <span
                     :class="[
-                      { 'completed-step': steps.completed },
+                      {
+                        'completed-step': steps.completed,
+                      },
+                      index !== 0
+                        ? stepsList[index - 1].completed && !steps.completed
+                          ? 'font-weight-bold'
+                          : ''
+                        : !steps.completed
+                        ? 'font-weight-bold'
+                        : '',
                       'd-flex align-center',
                     ]"
                     >{{ steps.text }}</span
