@@ -33,7 +33,11 @@
       </v-card-item>
     </v-card>
 
-    <div class="steps-menu" v-if="stepsCard">
+    <v-menu
+      class="steps-menu"
+      v-model="stepsCard"
+      :close-on-content-click="false"
+    >
       <v-card class="steps-card">
         <div class="steps-card-content">
           <v-card-title class="title pl-0">
@@ -90,7 +94,7 @@
           </v-list>
         </div>
       </v-card>
-    </div>
+    </v-menu>
   </div>
 </template>
 
