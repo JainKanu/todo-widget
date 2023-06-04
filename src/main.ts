@@ -1,5 +1,5 @@
 import { createApp } from "vue";
-import App from "./App.vue";
+import App from "./App.component";
 
 // Plugins
 import { registerPlugins } from "@/plugins";

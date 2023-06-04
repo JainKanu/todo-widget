@@ -12,8 +12,8 @@ export default createVuetify({
     defaultSet: "md",
     aliases,
     sets: {
-      md,
-    },
-  },
+      md
+    }
+  }
 });
 // https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides

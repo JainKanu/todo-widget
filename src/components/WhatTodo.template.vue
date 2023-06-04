@@ -58,7 +58,7 @@
                 <span
                   :class="[
                     {
-                      'completed-step': steps.completed,
+                      'completed-step': steps.completed
                     },
                     index !== 0
                       ? stepsList[index - 1].completed && !steps.completed
@@ -67,7 +67,7 @@
                       : !steps.completed
                       ? 'font-weight-bold'
                       : '',
-                    'd-flex align-center',
+                    'd-flex align-center'
                   ]"
                   >{{ steps.text }}</span
                 >
@@ -97,32 +97,3 @@
     </v-menu>
   </div>
 </template>
-
-<script lang="ts">
-import { Vue } from "vue-class-component";
-
-export default class WhatTodo extends Vue {
-  public stepsCard = false;
-  public progressValue = 0;
-  public stepsList = [
-    { text: "Select an insurance type", completed: true },
-    { text: "Get detailed report", completed: false },
-    { text: "Compare insurance plans", completed: false },
-    { text: "Choose an Advisor", completed: false },
-  ];
-
-  mounted() {
-    this.setProgressValue();
-  }
-
-  public onCompleteStep(index: number) {
-    this.stepsList[index].completed = true;
-    this.setProgressValue();
-  }
-
-  public setProgressValue() {
-    let completedSteps = this.stepsList.filter((key) => key.completed);
-    this.progressValue = completedSteps.length * 25;
-  }
-}
-</script>
